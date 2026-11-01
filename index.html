@@ -1,72 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <title>Landing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#130f1a">
+    <meta name="author" content="Aryan Sharma">
+    <meta name="description" content="Elsewhere in Frames is Aryan Sharma's personal collection of screenshots captured in video game worlds.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Elsewhere in Frames">
+    <meta property="og:description" content="A personal collection of in-game photographs by Aryan Sharma.">
+    <title>Elsewhere in Frames — Game photography by Aryan Sharma</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <div>Header Logo</div>
-        <ul>
-            <li><a href="#">header link one</a></li>
-            <li><a href="#">header link two</a></li>
-            <li><a href="#">header link three</a></li>
-        </ul>
-    </div>
-    <div class="main">
-        <div class="content-one">
-            <div class="text">
-                <h1>This website is awesome</h1>
-                <p>Hi there welcome to this website. Exciting first proper webpage project of mine.
-                </p>
-                <button>Sign up</button>
-            </div>
-            <img src="https://i.imgur.com/M5KSMUr.jpeg" alt="pretty landscape">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+        <div class="header-inner">
+            <a class="wordmark" href="#top" aria-label="Elsewhere in Frames, back to top">
+                Elsewhere <span>in Frames</span>
+            </a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="#featured">Featured frame</a>
+                <a href="#worlds">Worlds</a>
+                <a href="#about">About</a>
+            </nav>
+            <span class="header-note">Personal game photography</span>
         </div>
-        <div class="content-two">
-            <div class="title"><h2>Some random information</h2></div>
-            <div class="items">
-                <div class="item">
-                    <div class="box"></div>
-                    <div class="text">this is some subtext under an illustration or image</div>
-                </div>
-                <div class="item">
-                    <div class="box"></div>
-                    <div class="text">this is some subtext under an illustration or image</div>
-                </div>
-                <div class="item">
-                    <div class="box"></div>
-                    <div class="text">this is some subtext under an illustration or image</div>
-                </div>
-                <div class="item">
-                    <div class="box"></div>
-                    <div class="text">this is some subtext under an illustration or image</div>
-                </div>
+    </header>
+
+    <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-media" id="featured">
+                <figure class="featured-frame">
+                    <img
+                        src="assets/featured-frame.jpeg"
+                        width="2560"
+                        height="1435"
+                        fetchpriority="high"
+                        alt="Warm light over snow-capped mountains, forest, and a winding river in a game world"
+                    >
+                    <figcaption>
+                        <span>Frame 001</span>
+                        <span>Captured by Aryan Sharma</span>
+                    </figcaption>
+                </figure>
             </div>
-        </div>
-        <div class="content-three">
-            <div class="text">I hope you liked some of my images. Took them myself. You may think they look real,
-            but they are all taken from video games!
-            <div class="signature">      -Aryan, creator of this page</div>
+            <div class="hero-copy">
+                <p class="eyebrow">A different view of familiar worlds</p>
+                <h1 id="hero-title">Stay<br>for the<br><em>view.</em></h1>
+                <p class="hero-description">A personal collection of screenshots from the places I find while playing. The light, the weather, and the scenes worth stopping for.</p>
+                <a class="text-link" href="#story">Behind the frames <span aria-hidden="true">↗</span></a>
             </div>
-        </div>
-        <div class="content-four">
-            <div class="box">
-                <div class="description">
-                <p class="heading">Call to action! It's time!</p>
-                <p class="text">Sign up for more images by clicking that button!</p>
+        </section>
+
+        <section class="story section-shell" id="story" aria-labelledby="story-title">
+            <p class="section-index"><span>01</span> The collection</p>
+            <div class="story-content">
+                <h2 id="story-title">For the moments between quests.</h2>
+                <p>I take these screenshots while I play, usually when a scene makes me stop for a second. This site gives those frames somewhere to live beyond a folder on my computer.</p>
+                <p class="small-note">Every photograph here is an original in-game capture.</p>
+            </div>
+        </section>
+
+        <section class="worlds" id="worlds" aria-labelledby="worlds-title">
+            <div class="worlds-inner section-shell">
+                <div class="worlds-intro">
+                    <p class="section-index"><span>02</span> Worlds on the list</p>
+                    <h2 id="worlds-title">More places<br><em>to explore.</em></h2>
+                    <p>The collection starts with one frame. These are some of the games I want to photograph as I add to it.</p>
                 </div>
-                <button>Sign up</button>
+                <ol class="world-list">
+                    <li><span>01</span> Red Dead Redemption 2</li>
+                    <li><span>02</span> Cyberpunk 2077</li>
+                    <li><span>03</span> Ghost of Tsushima</li>
+                    <li><span>04</span> Grand Theft Auto V</li>
+                    <li><span>05</span> Assassin’s Creed</li>
+                    <li><span>06</span> Uncharted</li>
+                </ol>
             </div>
+        </section>
+
+        <section class="about section-shell" id="about" aria-labelledby="about-title">
+            <p class="section-index"><span>03</span> Behind the camera</p>
+            <div class="about-content">
+                <h2 id="about-title">A player with an eye for the view.</h2>
+                <p>I’m Aryan Sharma. I like noticing the work that goes into the places we move through in games: the time of day, the weather, and the details around the next objective. Every image on this site is captured by me while playing.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a class="wordmark" href="#top">Elsewhere <span>in Frames</span></a>
+            <span>Game photography by Aryan Sharma</span>
+            <a href="#top">Back to top ↑</a>
         </div>
-    </div>
-    <div class="footer">
-        <div class="text">Copright © Aryan Sharma 2025</div>
-    </div>
+    </footer>
 </body>
 </html>
