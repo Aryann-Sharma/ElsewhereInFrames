@@ -206,7 +206,6 @@ h1 em {
 
 .hero-description,
 .story-content > p,
-.worlds-intro > p:last-child,
 .about-content p {
     color: #c8bacc;
     font-size: 16px;
@@ -296,55 +295,6 @@ h1 em {
 .worlds {
     border-block: 1px solid #57465e;
     background: #1d1627;
-}
-
-.worlds-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 11%;
-    padding-block: 115px 125px;
-}
-
-.worlds-intro h2 {
-    margin: 53px 0 27px;
-    font-size: clamp(52px, 5vw, 80px);
-    line-height: 1.02;
-    letter-spacing: -.07em;
-}
-
-.worlds-intro h2 em {
-    color: #e0a2dd;
-}
-
-.worlds-intro > p:last-child {
-    max-width: 480px;
-}
-
-.world-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.world-list li {
-    display: flex;
-    align-items: baseline;
-    gap: 27px;
-    padding: 23px 0;
-    border-bottom: 1px solid #57465e;
-    font-size: clamp(17px, 1.6vw, 23px);
-    letter-spacing: -.025em;
-}
-
-.world-list li:first-child {
-    border-top: 1px solid #57465e;
-}
-
-.world-list span {
-    color: #e0a2dd;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .1em;
 }
 
 .about {
@@ -457,8 +407,7 @@ h1 em {
     }
 
     .story,
-    .about,
-    .worlds-inner {
+    .about {
         display: block;
         padding-block: 84px 94px;
     }
@@ -467,15 +416,6 @@ h1 em {
     .about h2 {
         margin-top: 40px;
         font-size: clamp(42px, 9vw, 60px);
-    }
-
-    .worlds-intro h2 {
-        margin-top: 40px;
-        font-size: clamp(52px, 10vw, 70px);
-    }
-
-    .world-list {
-        margin-top: 45px;
     }
 
     .footer-inner {
@@ -498,7 +438,6 @@ h1 em {
 
     .hero-description,
     .story-content > p,
-    .worlds-intro > p:last-child,
     .about-content p {
         font-size: 15px;
     }
