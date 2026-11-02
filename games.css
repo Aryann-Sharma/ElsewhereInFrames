@@ -22,13 +22,14 @@
 .selected-heading h2 em { color: #e0a2dd; }
 .selected-heading > p { max-width: 350px; margin: 0; color: #c8bacc; font-size: 15px; line-height: 1.7; }
 .game-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.game-card { position: relative; display: flex; min-height: 335px; overflow: hidden; isolation: isolate; border: 1px solid #ffffff2c; text-decoration: none; background: #21202b; }
+.game-card { position: relative; display: flex; aspect-ratio: 8 / 5; overflow: hidden; isolation: isolate; border: 1px solid #ffffff2c; text-decoration: none; background: #21202b; transition: border-color .25s ease; }
 .game-card-art { position: absolute; inset: 0; z-index: -3; background: var(--art); transition: transform .35s ease; }
 .game-card-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #10121a0b 20%, #10121ae8 100%); }
-.game-card-image { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.game-card-image { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.theme-gta-online .game-card-image { object-position: center bottom; }
 .game-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #10121a0a 30%, #10121ad9 100%); pointer-events: none; }
 .game-card-photo .game-card-art { background: linear-gradient(180deg, #10121a00, #10121ae0), url("assets/featured-frame.jpeg") center / cover; }
-.game-card:hover .game-card-art, .game-card:hover .game-card-image { transform: scale(1.035); }
+.game-card:hover { border-color: var(--accent); }
 .game-card:focus-visible { outline-offset: 3px; }
 .game-card-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 11px; width: 100%; padding: 28px; }
 .game-card-number, .game-card-copy > span:last-child { color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
@@ -41,7 +42,6 @@
 .catalogue-intro h1 { max-width: 850px; }
 .catalogue-intro p:last-child { max-width: 630px; margin: 30px 0 0; color: #c8bacc; font-size: 17px; line-height: 1.75; }
 .catalogue-section { padding-bottom: 120px; }
-.catalogue-section .game-card { min-height: 370px; }
 .catalogue-count { margin: 0 0 22px; color: #b9a9c1; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
 
 .world-page { background: var(--page-bg, #171923); }
@@ -96,7 +96,6 @@
     .selected-heading > p { margin-top: 24px; }
     .catalogue-intro { padding-block: 75px 55px; }
     .catalogue-section { padding-bottom: 90px; }
-    .game-card, .catalogue-section .game-card { min-height: 310px; }
     .world-page .world-hero { min-height: 565px; }
     .world-page .world-hero-content { width: min(100% - 40px, 1420px); padding-block: 45px 80px; }
     .world-page .breadcrumb { margin-bottom: 65px; }
@@ -107,7 +106,6 @@
 @media (max-width: 520px) {
     .game-grid { grid-template-columns: 1fr; }
     .world-page .photo-grid { grid-template-columns: 1fr; }
-    .game-card, .catalogue-section .game-card { min-height: 300px; }
     .world-page h1 { font-size: clamp(52px, 14vw, 76px); }
     .world-page .world-summary { font-size: 15px; }
     .world-page .world-photo figcaption { flex-direction: column; gap: 5px; }
@@ -117,5 +115,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .game-card-art, .game-card-image { transition: none; }
+    .game-card, .game-card-art { transition: none; }
 }
