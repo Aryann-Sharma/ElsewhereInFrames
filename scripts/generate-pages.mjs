@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
 // Keep the catalogue and individual pages in the same order.
 const games = [
@@ -8,8 +8,7 @@ const games = [
         theme: 'red-dead',
         place: 'The frontier',
         background: '#211b1b',
-        description: 'Long rides, changing weather, and the kind of light that makes a trail worth stopping on.',
-        photo: true
+        description: 'Long rides, changing weather, and the kind of light that makes a trail worth stopping on.'
     },
     {
         slug: 'cyberpunk-2077',
@@ -53,7 +52,7 @@ const games = [
     },
     {
         slug: 'marvels-spider-man',
-        name: 'Marvel’s Spider-Man',
+        name: 'Marvel’s Spider-Man Remastered',
         theme: 'spider-man',
         place: 'New York',
         background: '#20283a',
@@ -66,6 +65,46 @@ const games = [
         place: 'New York, again',
         background: '#1a1b25',
         description: 'Familiar streets at a different pace, with more of the city waiting beyond the skyline.'
+    },
+    {
+        slug: 'assassins-creed-mirage',
+        name: 'Assassin’s Creed Mirage',
+        theme: 'mirage',
+        place: 'Baghdad',
+        background: '#302b2b',
+        description: 'Warm stone, crowded streets, and the quieter corners of a city seen from its rooftops.'
+    },
+    {
+        slug: 'assassins-creed-syndicate',
+        name: 'Assassin’s Creed Syndicate',
+        theme: 'syndicate',
+        place: 'London',
+        background: '#232a2c',
+        description: 'Victorian London in smoke and lamplight, from its broad avenues to its narrow alleys.'
+    },
+    {
+        slug: 'ghost-of-tsushima',
+        name: 'Ghost of Tsushima',
+        theme: 'tsushima',
+        place: 'Tsushima Island',
+        background: '#25312c',
+        description: 'Open fields, shifting wind, and a landscape that knows when to leave room for silence.'
+    },
+    {
+        slug: 'batman-arkham-knight',
+        name: 'Batman: Arkham Knight',
+        theme: 'arkham',
+        place: 'Gotham City',
+        background: '#171d2a',
+        description: 'Gotham after dark: wet streets, sharp silhouettes, and light caught between buildings.'
+    },
+    {
+        slug: 'marvels-spider-man-miles-morales',
+        name: 'Marvel’s Spider-Man: Miles Morales',
+        theme: 'miles',
+        place: 'Harlem',
+        background: '#252332',
+        description: 'A winter city with its own rhythm, bright windows, and streets worth slowing down for.'
     },
     {
         slug: 'the-last-of-us-part-i',
@@ -101,10 +140,24 @@ const games = [
     }
 ];
 
+const photos = JSON.parse((await readFile('assets/screenshots/manifest.json', 'utf8')).replace(/^\uFEFF/, ''));
 const escapeHtml = (value) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
-const card = (game, index, prefix = '') => `                    <a class="game-card theme-${game.theme}${game.photo ? ' game-card-photo' : ''}" href="${prefix}games/${game.slug}.html">
+const framesFor = (game) => photos[game.slug] ?? [];
+const coverFrames = {
+    'cyberpunk-2077': 3,
+    'uncharted-4': 3,
+    'assassins-creed-origins': 2,
+    'ghost-of-tsushima': 13,
+    'marvels-spider-man': 6,
+    'marvels-spider-man-miles-morales': 4,
+    'the-last-of-us-part-i': 7,
+    'the-last-of-us-part-ii': 4,
+    'grand-theft-auto-v': 9
+};
+const coverFor = (game) => framesFor(game)[(coverFrames[game.slug] ?? 1) - 1] ?? framesFor(game)[0];
+const card = (game, index) => `                    <a class="game-card theme-${game.theme}" href="games/${game.slug}.html">
                         <span class="game-card-art" aria-hidden="true"></span>
-                        <span class="game-card-copy"><span class="game-card-number">${String(index + 1).padStart(2, '0')} / ${escapeHtml(game.place)}</span><strong>${escapeHtml(game.name)}</strong><span>${game.photo ? 'View the frames' : 'Explore this world'} ↗</span></span>
+${framesFor(game).length ? `                        <img class="game-card-image" src="${coverFor(game).thumb}" alt="" loading="lazy" decoding="async">\n` : ''}                        <span class="game-card-copy"><span class="game-card-number">${String(index + 1).padStart(2, '0')} / ${escapeHtml(game.place)}</span><strong>${escapeHtml(game.name)}</strong><span>${framesFor(game).length ? 'View the frames' : 'Explore this world'} ↗</span></span>
                     </a>`;
 
 const catalogue = `<!doctype html>
@@ -139,10 +192,10 @@ const catalogue = `<!doctype html>
         <div class="catalogue-intro section-shell">
             <p class="section-index"><span>01</span> The catalogue</p>
             <h1>Every world has a different light.</h1>
-            <p>Browse the places in the collection. The first photograph is here; the other pages will grow as I take more screenshots.</p>
+            <p>Browse the places in the collection. Each page gathers photographs from one game world.</p>
         </div>
         <section class="catalogue-section section-shell" aria-label="Game worlds">
-            <p class="catalogue-count">12 worlds / 1 photographed so far</p>
+            <p class="catalogue-count">${games.length} worlds / ${games.reduce((total, game) => total + framesFor(game).length, 0)} photographs</p>
             <div class="game-grid">
 ${games.map((game, index) => card(game, index)).join('\n')}
             </div>
@@ -162,11 +215,16 @@ ${games.map((game, index) => card(game, index)).join('\n')}
 function gamePage(game, index) {
     const previous = games[(index - 1 + games.length) % games.length];
     const next = games[(index + 1) % games.length];
-    const gallery = game.photo
-        ? `            <figure class="world-photo">
-                <img src="../assets/featured-frame.jpeg" width="2560" height="1435" alt="Warm light over snow-capped mountains, forest, and a winding river in Red Dead Redemption 2">
-                <figcaption><span>Frame 001 · Mountain country</span><span>Captured by Aryan Sharma</span></figcaption>
-            </figure>`
+    const frames = framesFor(game);
+    const gallery = frames.length
+        ? `            <div class="photo-grid">
+${frames.map((frame, frameIndex) => `                <figure class="photo-item">
+                    <a href="../${frame.full}" aria-label="Open full-size frame ${frameIndex + 1} from ${escapeHtml(game.name)}">
+                        <img src="../${frame.thumb}" width="${frame.width}" height="${frame.height}" alt="Screenshot from ${escapeHtml(game.name)}, frame ${frameIndex + 1}" loading="lazy" decoding="async">
+                        <span class="photo-caption"><span>Frame ${String(frameIndex + 1).padStart(3, '0')}</span><span>Open full size ↗</span></span>
+                    </a>
+                </figure>`).join('\n')}
+            </div>`
         : `            <div class="empty-gallery">
                 <strong>The first frames are on their way.</strong>
                 <p>This space is ready for screenshots captured during my own playthrough.</p>
@@ -203,6 +261,7 @@ function gamePage(game, index) {
     <main id="main">
         <section class="world-hero" aria-labelledby="world-title">
             <div class="world-hero-art" aria-hidden="true"></div>
+${frames.length ? `            <img class="world-hero-image" src="../${coverFor(game).thumb}" alt="" fetchpriority="high">\n` : ''}
             <div class="world-hero-content">
                 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../catalogue.html">Catalogue</a><span aria-hidden="true">/</span><span>${escapeHtml(game.name)}</span></nav>
                 <p class="world-kicker">World ${String(index + 1).padStart(2, '0')} / ${escapeHtml(game.place)}</p>
@@ -211,7 +270,7 @@ function gamePage(game, index) {
             </div>
         </section>
         <section class="world-content section-shell" aria-labelledby="frames-title">
-            <div class="world-section-heading"><h2 id="frames-title">The frames</h2><span>${game.photo ? '01 photograph' : 'Photographs coming soon'}</span></div>
+            <div class="world-section-heading"><h2 id="frames-title">The frames</h2><span>${frames.length ? `${frames.length} photographs` : 'Photographs coming soon'}</span></div>
 ${gallery}
             <nav class="world-navigation" aria-label="More worlds">
                 <a href="${previous.slug}.html">← ${escapeHtml(previous.name)}</a>

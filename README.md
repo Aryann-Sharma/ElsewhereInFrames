@@ -1,6 +1,6 @@
 # Elsewhere in Frames
 
-A personal game photography site by Aryan Sharma. It collects screenshots I take while exploring video game worlds, starting with a landscape frame from Red Dead Redemption 2.
+A personal game photography site by Aryan Sharma. It collects screenshots I take while exploring video game worlds.
 
 ![A mountain landscape captured in-game](assets/featured-frame.jpeg)
 
@@ -12,8 +12,9 @@ Open `index.html` in a browser. The site is plain HTML and CSS, with no build st
 
 - A featured Red Dead Redemption 2 photograph, stored locally in `assets/featured-frame.jpeg`
 - A homepage with selected worlds and a link to the full catalogue
-- Twelve individual game pages with palettes inspired by their settings
-- A clear holding state on pages awaiting photographs from my own collection
+- Seventeen individual game pages with palettes inspired by their settings
+- 177 photographs from 17 games, with smaller previews and larger viewing links
+- Dedicated pages for new additions, including Ghost of Tsushima, Batman: Arkham Knight, and Marvel’s Spider-Man: Miles Morales
 
 The layout adapts to desktop and mobile screens. Navigation works with a keyboard, images have descriptive text, and reduced-motion preferences are respected.
 
@@ -25,10 +26,13 @@ The layout adapts to desktop and mobile screens. Navigation works with a keyboar
 - `style.css` — shared layout and typography
 - `games.css` — catalogue, game page, and theme styles
 - `scripts/generate-pages.mjs` — source for the catalogue and game pages
+- `scripts/import-screenshots.ps1` — imports an archive of screenshots and prepares web sized copies
+- `assets/screenshots/manifest.json` — image lists used to build the galleries
+- `assets/screenshots/` — full size images and gallery previews
 - `assets/featured-frame.jpeg` — original in-game capture
 
 All photographs featured on the site are captured by Aryan Sharma.
 
 ## Updating the collection
 
-Edit the game details in `scripts/generate-pages.mjs`, then run `node scripts/generate-pages.mjs` from the project root to refresh the catalogue and game pages. The generated HTML is checked in, so viewing the site never requires Node.
+Edit the game details in `scripts/generate-pages.mjs`, then run `node scripts/generate-pages.mjs` from the project root to refresh the catalogue and game pages. To import a new archive, run `./scripts/import-screenshots.ps1 -ArchivePath "C:\path\to\screenshots.zip"` first. The generated HTML is checked in, so viewing the site never requires Node.
