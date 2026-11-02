@@ -12,6 +12,12 @@ The collection currently holds 176 photographs, including Red Dead Redemption 2,
 
 I captured every photograph on the site while playing.
 
+## Credits and image use
+
+© 2026 Aryan Sharma for the site's original design and writing. I captured the screenshots during play; the game content and trademarks remain with their respective owners. This is an unofficial fan project.
+
+The repository does not grant a general reuse license for its images. Please ask me before republishing one of my captures.
+
 ## Run it locally
 
 The site is plain HTML and CSS, so there is no build step. Open `index.html` directly in a browser. If you use a local static file server, point it at the repository root. The homepage is `/` and the catalogue is `/catalogue.html`.

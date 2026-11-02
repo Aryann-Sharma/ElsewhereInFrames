@@ -311,6 +311,20 @@ h1 em {
     color: #b9a9c1;
 }
 
+.footer-credits {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 620px;
+    margin: 0;
+    line-height: 1.45;
+}
+
+.footer-credits small {
+    font-size: 11px;
+    letter-spacing: .02em;
+}
+
 @media (max-width: 1100px) {
     .header-inner,
     .footer-inner,
@@ -428,6 +442,15 @@ h1 em {
 
     .footer-inner .wordmark {
         width: 100%;
+    }
+
+    .footer-credits {
+        order: 3;
+        width: 100%;
+    }
+
+    .footer-inner > a:last-child {
+        order: 2;
     }
 }
 

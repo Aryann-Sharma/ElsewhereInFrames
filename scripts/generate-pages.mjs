@@ -147,6 +147,10 @@ const coverFrames = {
     'grand-theft-auto-v': 9
 };
 const coverFor = (game) => framesFor(game)[(coverFrames[game.slug] ?? 1) - 1] ?? framesFor(game)[0];
+const footerCredits = `<p class="footer-credits">
+                <span>© 2026 Aryan Sharma · Site design and writing</span>
+                <small>Screenshots captured by Aryan Sharma. Game content and trademarks belong to their respective owners. Unofficial fan project.</small>
+            </p>`;
 const card = (game, index) => `                    <a class="game-card theme-${game.theme}" href="games/${game.slug}.html">
                         <span class="game-card-art" aria-hidden="true"></span>
 ${framesFor(game).length ? `                        <img class="game-card-image" src="${coverFor(game).thumb}" alt="" loading="lazy" decoding="async">\n` : ''}                        <span class="game-card-copy"><span class="game-card-number">${String(index + 1).padStart(2, '0')} / ${escapeHtml(game.place)}</span><strong>${escapeHtml(game.name)}</strong><span>${framesFor(game).length ? 'View the frames' : 'Explore this world'} ↗</span></span>
@@ -196,7 +200,7 @@ ${games.map((game, index) => card(game, index)).join('\n')}
     <footer class="site-footer">
         <div class="footer-inner">
             <a class="wordmark" href="index.html">Elsewhere <span>in Frames</span></a>
-            <span>Game photography by Aryan Sharma</span>
+            ${footerCredits}
             <a href="#top">Back to top ↑</a>
         </div>
     </footer>
@@ -273,7 +277,7 @@ ${gallery}
     <footer class="site-footer">
         <div class="footer-inner">
             <a class="wordmark" href="../index.html">Elsewhere <span>in Frames</span></a>
-            <span>Game photography by Aryan Sharma</span>
+            ${footerCredits}
             <a href="#main">Back to top ↑</a>
         </div>
     </footer>
