@@ -1,42 +1,52 @@
 # Elsewhere in Frames
 
-A personal game photography site by Aryan Sharma. It collects screenshots I take while exploring video game worlds.
+A personal game photography site by Aryan Sharma. These are screenshots I took while exploring game worlds and stopping for the scenes that caught my eye.
 
-![A mountain landscape captured in-game](assets/featured-frame.jpeg)
+![A mountain landscape from Red Dead Redemption 2](assets/featured-frame.jpeg)
 
-## View the site
+## Browse the site
 
-Open `index.html` in a browser. The site is plain HTML and CSS, with no build step or dependencies.
+The homepage leads to a catalogue of 16 games. Each game has its own page and a gallery of photographs. Select a frame to open the full-size image.
 
-## What is here
+The collection currently holds 176 photographs, including Red Dead Redemption 2, Cyberpunk 2077, Ghost of Tsushima, the Assassin’s Creed games, and The Last of Us. The pages use colours drawn from each setting while keeping the photographs at the centre.
 
-- A featured Red Dead Redemption 2 photograph, stored locally in `assets/featured-frame.jpeg`
-- A homepage with selected worlds and a link to the full catalogue
-- Sixteen individual game pages with palettes inspired by their settings
-- 176 photographs from 16 games, with smaller previews and larger viewing links
-- Dedicated pages for new additions, including Ghost of Tsushima, Batman: Arkham Knight, and Marvel’s Spider-Man: Miles Morales
+I captured every photograph on the site while playing.
 
-The layout adapts to desktop and mobile screens. Navigation works with a keyboard, images have descriptive text, and reduced-motion preferences are respected.
+## Run it locally
 
-## Checks
+The site is plain HTML and CSS, so there is no build step. Open `index.html` directly in a browser. If you use a local static file server, point it at the repository root. The homepage is `/` and the catalogue is `/catalogue.html`.
 
-Run `node --test tests/site.test.mjs` to check the catalogue, galleries, generated pages, and local links and images through a local HTTP server. The same checks run on pull requests and updates to `main`.
+## Project layout
 
-## Project files
+| Path | Purpose |
+| --- | --- |
+| `index.html` | Homepage and selected games |
+| `catalogue.html` | Complete game catalogue |
+| `games/` | One page per game |
+| `style.css` and `games.css` | Shared layout and game themes |
+| `assets/screenshots/` | Full-size photographs and smaller previews |
+| `assets/screenshots/manifest.json` | Image list used to build the galleries |
+| `scripts/generate-pages.mjs` | Game details and page generator |
+| `scripts/import-screenshots.ps1` | Screenshot archive importer for Windows PowerShell |
+| `tests/site.test.mjs` | Catalogue, gallery, and link checks |
 
-- `index.html` — homepage content and metadata
-- `catalogue.html` — the complete list of game worlds
-- `games/` — individual game pages
-- `style.css` — shared layout and typography
-- `games.css` — catalogue, game page, and theme styles
-- `scripts/generate-pages.mjs` — source for the catalogue and game pages
-- `scripts/import-screenshots.ps1` — imports an archive of screenshots and prepares web sized copies
-- `assets/screenshots/manifest.json` — image lists used to build the galleries
-- `assets/screenshots/` — full size images and gallery previews
-- `assets/featured-frame.jpeg` — original in-game capture
+## Update the collection
 
-All photographs featured on the site are captured by Aryan Sharma.
+The catalogue and game pages are generated and checked into the repository. To change a game's title, description, theme, or cover photograph, edit `scripts/generate-pages.mjs`, then run:
 
-## Updating the collection
+```sh
+node scripts/generate-pages.mjs
+node --test tests/site.test.mjs
+```
 
-Edit the game details in `scripts/generate-pages.mjs`, then run `node scripts/generate-pages.mjs` from the project root to refresh the catalogue and game pages. To import a new archive, run `./scripts/import-screenshots.ps1 -ArchivePath "C:\path\to\screenshots.zip"` first. The generated HTML is checked in, so viewing the site never requires Node.
+To add screenshots from an archive, first update the folder mappings in `scripts/import-screenshots.ps1` and add a matching game entry in `scripts/generate-pages.mjs` if the game is new. The importer expects PNG files under `eif/<game folder>/` inside the archive. From the repository root, run it in Windows PowerShell:
+
+```powershell
+.\scripts\import-screenshots.ps1 -ArchivePath "C:\path\to\screenshots.zip"
+node scripts/generate-pages.mjs
+node --test tests/site.test.mjs
+```
+
+The importer writes full-size JPEGs, smaller previews, and the image manifest. Review the generated pages and images before committing them. Pull requests and updates to `main` run the same tests automatically.
+
+Release history is in [CHANGELOG.md](CHANGELOG.md).
