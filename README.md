@@ -18,6 +18,10 @@ Open `index.html` in a browser. The site is plain HTML and CSS, with no build st
 
 The layout adapts to desktop and mobile screens. Navigation works with a keyboard, images have descriptive text, and reduced-motion preferences are respected.
 
+## Checks
+
+Run `node --test tests/site.test.mjs` to check the catalogue, galleries, generated pages, and local links and images through a local HTTP server. The same checks run on pull requests and updates to `main`.
+
 ## Project files
 
 - `index.html` — homepage content and metadata
