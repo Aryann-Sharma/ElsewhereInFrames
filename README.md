@@ -18,6 +18,8 @@ I captured every photograph on the site while playing.
 
 The repository does not grant a general reuse license for its images. Please ask me before republishing one of my captures.
 
+The credit appears in the footer of every page. This public repository contains the JPEGs shown on the site, including the larger gallery files and their previews, so those copies can be downloaded. The original PNG archive is not included.
+
 ## Run it locally
 
 The site is plain HTML and CSS, so there is no build step. Open `index.html` directly in a browser. If you use a local static file server, point it at the repository root. The homepage is `/` and the catalogue is `/catalogue.html`.

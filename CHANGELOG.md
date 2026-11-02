@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added a footer credit for the screenshots and a note that game content belongs to its owners.
+- Clarified which image files are public and how to ask about reuse.
+
 ## v1.0.0
 
 This first release organises my game screenshots into a site I can browse by world.
