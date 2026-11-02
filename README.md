@@ -12,8 +12,8 @@ Open `index.html` in a browser. The site is plain HTML and CSS, with no build st
 
 - A featured Red Dead Redemption 2 photograph, stored locally in `assets/featured-frame.jpeg`
 - A homepage with selected worlds and a link to the full catalogue
-- Seventeen individual game pages with palettes inspired by their settings
-- 177 photographs from 17 games, with smaller previews and larger viewing links
+- Sixteen individual game pages with palettes inspired by their settings
+- 176 photographs from 16 games, with smaller previews and larger viewing links
 - Dedicated pages for new additions, including Ghost of Tsushima, Batman: Arkham Knight, and Marvel’s Spider-Man: Miles Morales
 
 The layout adapts to desktop and mobile screens. Navigation works with a keyboard, images have descriptive text, and reduced-motion preferences are respected.

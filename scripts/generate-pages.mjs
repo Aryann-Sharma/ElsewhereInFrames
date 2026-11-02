@@ -59,14 +59,6 @@ const games = [
         description: 'The city seen from above, from street level, and from everywhere in between.'
     },
     {
-        slug: 'marvels-spider-man-2',
-        name: 'Marvel’s Spider-Man 2',
-        theme: 'spider-man-2',
-        place: 'New York, again',
-        background: '#1a1b25',
-        description: 'Familiar streets at a different pace, with more of the city waiting beyond the skyline.'
-    },
-    {
         slug: 'assassins-creed-mirage',
         name: 'Assassin’s Creed Mirage',
         theme: 'mirage',

@@ -509,108 +509,122 @@
       "height": 1600
     }
   ],
+  "gta-online": [
+    {
+      "full": "assets/screenshots/gta-online/frame-001.jpg",
+      "thumb": "assets/screenshots/gta-online/frame-001-thumb.jpg",
+      "width": 1779,
+      "height": 1337
+    },
+    {
+      "full": "assets/screenshots/gta-online/frame-002.jpg",
+      "thumb": "assets/screenshots/gta-online/frame-002-thumb.jpg",
+      "width": 2559,
+      "height": 1519
+    }
+  ],
   "red-dead-redemption-2": [
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-001.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-001-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-002.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-002-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-003.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-003-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-004.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-004-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-005.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-005-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-006.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-006-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-007.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-007-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-008.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-008-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-009.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-009-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-010.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-010-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-011.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-011-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-012.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-012-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-013.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-013-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-014.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-014-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-015.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-015-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-016.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-016-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-017.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-017-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-018.jpg",
@@ -634,7 +648,7 @@
       "full": "assets/screenshots/red-dead-redemption-2/frame-021.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-021-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-022.jpg",
@@ -658,7 +672,7 @@
       "full": "assets/screenshots/red-dead-redemption-2/frame-025.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-025-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-026.jpg",
@@ -676,13 +690,13 @@
       "full": "assets/screenshots/red-dead-redemption-2/frame-028.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-028-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-029.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-029-thumb.jpg",
       "width": 2560,
-      "height": 1446
+      "height": 1426
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-030.jpg",
@@ -700,7 +714,7 @@
       "full": "assets/screenshots/red-dead-redemption-2/frame-032.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-032-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-033.jpg",
@@ -718,57 +732,49 @@
       "full": "assets/screenshots/red-dead-redemption-2/frame-035.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-035-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-036.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-036-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-037.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-037-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-038.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-038-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-039.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-039-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-040.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-040-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-041.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-041-thumb.jpg",
       "width": 2560,
-      "height": 1600
+      "height": 1440
     },
     {
       "full": "assets/screenshots/red-dead-redemption-2/frame-042.jpg",
       "thumb": "assets/screenshots/red-dead-redemption-2/frame-042-thumb.jpg",
       "width": 2560,
-      "height": 1600
-    }
-  ],
-  "marvels-spider-man-2": [
-    {
-      "full": "assets/screenshots/marvels-spider-man-2/frame-001.jpg",
-      "thumb": "assets/screenshots/marvels-spider-man-2/frame-001-thumb.jpg",
-      "width": 2560,
-      "height": 1600
+      "height": 1440
     }
   ],
   "marvels-spider-man-miles-morales": [
@@ -1079,20 +1085,6 @@
       "thumb": "assets/screenshots/uncharted-4/frame-006-thumb.jpg",
       "width": 2560,
       "height": 1438
-    }
-  ],
-  "gta-online": [
-    {
-      "full": "assets/screenshots/gta-online/frame-001.jpg",
-      "thumb": "assets/screenshots/gta-online/frame-001-thumb.jpg",
-      "width": 1779,
-      "height": 1337
-    },
-    {
-      "full": "assets/screenshots/gta-online/frame-002.jpg",
-      "thumb": "assets/screenshots/gta-online/frame-002-thumb.jpg",
-      "width": 2559,
-      "height": 1519
     }
   ]
 }

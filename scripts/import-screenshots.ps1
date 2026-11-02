@@ -19,7 +19,6 @@ $folders = @{
     'gta5' = 'grand-theft-auto-v'
     'rdr2' = 'red-dead-redemption-2'
     'spiderman' = 'marvels-spider-man'
-    'spiderman 2' = 'marvels-spider-man-2'
     'spiderman mm' = 'marvels-spider-man-miles-morales'
     'tlou' = 'the-last-of-us-part-i'
     'tlou 2' = 'the-last-of-us-part-ii'
@@ -30,10 +29,11 @@ $encoder = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() |
     Where-Object MimeType -eq 'image/jpeg' |
     Select-Object -First 1
 
-function Save-Jpeg([System.Drawing.Image] $source, [string] $path, [int] $maxWidth, [int] $quality) {
+function Save-Jpeg([System.Drawing.Image] $source, [string] $path, [int] $maxWidth, [int] $quality, [int] $cropTop = 0, [int] $cropBottom = 0) {
+    $sourceHeight = $source.Height - $cropTop - $cropBottom
     $scale = [math]::Min(1.0, ([double] $maxWidth / [double] $source.Width))
     $width = [int][math]::Round($source.Width * $scale)
-    $height = [int][math]::Round($source.Height * $scale)
+    $height = [int][math]::Round($sourceHeight * $scale)
     if ($width -lt 1 -or $height -lt 1) {
         throw "Invalid image dimensions: $($source.Width)x$($source.Height) -> ${width}x${height}"
     }
@@ -45,7 +45,9 @@ function Save-Jpeg([System.Drawing.Image] $source, [string] $path, [int] $maxWid
         $graphics.Clear([System.Drawing.Color]::Black)
         $graphics.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
         $graphics.CompositingQuality = [System.Drawing.Drawing2D.CompositingQuality]::HighQuality
-        $graphics.DrawImage($source, 0, 0, $width, $height)
+        $destination = [System.Drawing.Rectangle]::new(0, 0, $width, $height)
+        $sourceArea = [System.Drawing.Rectangle]::new(0, $cropTop, $source.Width, $sourceHeight)
+        $graphics.DrawImage($source, $destination, $sourceArea, [System.Drawing.GraphicsUnit]::Pixel)
         $options.Param[0] = [System.Drawing.Imaging.EncoderParameter]::new(
             [System.Drawing.Imaging.Encoder]::Quality, [long] $quality
         )
@@ -72,6 +74,9 @@ try {
         }
 
         $folder = $Matches[1]
+        if ($folder -eq 'spiderman 2') {
+            continue
+        }
         if (-not $folders.ContainsKey($folder)) {
             throw "No game mapping for archive folder: $folder"
         }
@@ -98,13 +103,27 @@ try {
         try {
             $image = [System.Drawing.Image]::FromStream($stream)
             try {
-                Save-Jpeg $image $fullPath 2560 88
-                Save-Jpeg $image $thumbPath 960 82
+                $cropTop = 0
+                $cropBottom = 0
+                if ($slug -eq 'red-dead-redemption-2') {
+                    # These captures contain a 16:9 image inside a 2560x1600 canvas.
+                    if ($image.Width -eq 2560 -and $image.Height -eq 1600) {
+                        $cropTop = 80
+                        $cropBottom = 80
+                    }
+                    # One separately cropped capture has a narrow strip at the bottom.
+                    elseif ($entry.Name -eq 'Screenshot (3653).png') {
+                        $cropBottom = 20
+                    }
+                }
+
+                Save-Jpeg $image $fullPath 2560 88 $cropTop $cropBottom
+                Save-Jpeg $image $thumbPath 960 82 $cropTop $cropBottom
                 [void] $manifest[$slug].Add([ordered]@{
                     full = ($fullPath -replace '\\', '/')
                     thumb = ($thumbPath -replace '\\', '/')
                     width = $image.Width
-                    height = $image.Height
+                    height = $image.Height - $cropTop - $cropBottom
                 })
             }
             finally { $image.Dispose() }

@@ -6,7 +6,6 @@
 .theme-origins { --accent: #ead0a4; --art: radial-gradient(circle at 72% 24%, #dbc290 0, transparent 30%), linear-gradient(145deg, #a6744e, #2d3d4b 76%); }
 .theme-odyssey { --accent: #caddef; --art: radial-gradient(circle at 75% 21%, #e2d5b4 0, transparent 27%), linear-gradient(145deg, #2b7495, #1b354c 75%); }
 .theme-spider-man { --accent: #f0aaa4; --art: linear-gradient(105deg, transparent 46%, #d3e5e43b 47%, transparent 48%), radial-gradient(circle at 75% 22%, #b83b3c, transparent 31%), linear-gradient(145deg, #354e68, #181e30 72%); }
-.theme-spider-man-2 { --accent: #ed9b96; --art: radial-gradient(circle at 73% 23%, #a32a37, transparent 30%), linear-gradient(145deg, #4c2932, #11151f 74%); }
 .theme-last-of-us { --accent: #bfd0a0; --art: radial-gradient(circle at 72% 22%, #9fa77d, transparent 32%), linear-gradient(145deg, #52604b, #242b2b 76%); }
 .theme-last-of-us-2 { --accent: #b6c9c6; --art: linear-gradient(110deg, transparent 46%, #afc6c344 47%, transparent 48%), radial-gradient(circle at 75% 22%, #6a8b82, transparent 29%), linear-gradient(145deg, #334b4d, #1a2429 78%); }
 .theme-gta-v { --accent: #f5c3a9; --art: radial-gradient(circle at 76% 21%, #e3a98e, transparent 29%), linear-gradient(145deg, #669f98, #273c4a 76%); }
@@ -72,7 +71,7 @@
 .world-page .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 35px 16px; margin-top: 35px; }
 .world-page .photo-item { min-width: 0; margin: 0; }
 .world-page .photo-item a { display: block; color: inherit; text-decoration: none; }
-.world-page .photo-item img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; border: 1px solid #ffffff40; background: #0c0e14; }
+.world-page .photo-item img { display: block; width: 100%; height: auto; border: 1px solid #ffffff40; background: #0c0e14; }
 .world-page .photo-item a:hover img { border-color: var(--accent); }
 .world-page .photo-caption { display: flex; justify-content: space-between; gap: 10px; padding-top: 11px; color: #ece5e5ad; font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
 .world-page .photo-caption span:last-child { color: var(--accent); }
