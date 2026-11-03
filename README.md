@@ -6,7 +6,7 @@ A personal game photography site by Aryan Sharma. These are screenshots I took w
 
 ## Browse the site
 
-The homepage leads to a catalogue of 15 worlds covering 16 games. GTA 5 & Online brings both sets of photographs together; the other games have their own pages. Select a frame to open it in the full-screen viewer. Use the on-screen arrows or the left and right arrow keys to move through a gallery; press Escape to return to the page. The featured photograph on the homepage opens in the same viewer.
+The homepage leads to a catalogue of 15 worlds covering 16 games. GTA 5 & Online brings both sets of photographs together; the other games have their own pages. Each gallery opens with the photograph chosen for its catalogue cover, and a few frames have short notes beneath them. Select a frame to open it in the full-screen viewer. Use the on-screen arrows, the left and right arrow keys, or a horizontal swipe on a touch screen to move through a gallery; press Escape to return to the page. The featured photograph on the homepage opens in the same viewer.
 
 The collection currently holds 176 photographs, including Red Dead Redemption 2, Cyberpunk 2077, Ghost of Tsushima, the Assassin’s Creed games, and The Last of Us. The pages use colours drawn from each setting while keeping the photographs at the centre.
 
@@ -33,19 +33,22 @@ The site uses plain HTML, CSS, and JavaScript, so there is no build step. Open `
 | `games/` | Gallery pages and a redirect from the former GTA Online page |
 | `style.css` and `games.css` | Shared layout and game themes |
 | `assets/screenshots/` | Full-size photographs and smaller previews |
+| `assets/favicon.svg` | Browser-tab icon |
 | `assets/screenshots/manifest.json` | Image list used to build the galleries |
 | `scripts/generate-pages.mjs` | Game details and page generator |
 | `scripts/photo-viewer.js` | Full-screen photograph navigation |
 | `scripts/import-screenshots.ps1` | Screenshot archive importer for Windows PowerShell |
-| `tests/site.test.mjs` | Catalogue, gallery, and link checks |
+| `tests/` | Catalogue, gallery, link, and viewer checks |
 
 ## Update the collection
 
-The catalogue and game pages are generated and checked into the repository. To change a game's title, description, theme, or cover photograph, edit `scripts/generate-pages.mjs`, then run:
+The catalogue and game pages are generated and checked into the repository. To change a game's title, description, theme, cover photograph, opening order, or selected frame notes, edit `scripts/generate-pages.mjs`, then run:
+
+`coverFrames` selects catalogue covers, `openingFrames` sets the first few photographs in larger galleries, and `frameNotes` holds the optional captions and image descriptions. Gallery order changes do not modify the image files.
 
 ```sh
 node scripts/generate-pages.mjs
-node --test tests/site.test.mjs
+node --test
 ```
 
 To add screenshots from an archive, first update the folder mappings in `scripts/import-screenshots.ps1` and add a matching game entry in `scripts/generate-pages.mjs` if the game is new. The importer expects PNG files under `eif/<game folder>/` inside the archive. From the repository root, run it in Windows PowerShell:
@@ -53,7 +56,7 @@ To add screenshots from an archive, first update the folder mappings in `scripts
 ```powershell
 .\scripts\import-screenshots.ps1 -ArchivePath "C:\path\to\screenshots.zip"
 node scripts/generate-pages.mjs
-node --test tests/site.test.mjs
+node --test
 ```
 
 The importer writes full-size JPEGs, smaller previews, and the image manifest. Review the generated pages and images before committing them. Pull requests and updates to `main` run the same tests automatically.
