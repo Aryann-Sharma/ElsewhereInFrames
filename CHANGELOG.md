@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v1.0.1 — 2026-11-03
+
 - Made the photograph viewer controls lighter and reduced the idle fade delay.
 - Added a full-screen photograph viewer with on-screen and keyboard navigation, including the featured homepage image.
 - Removed the frame number beneath the featured homepage image.
