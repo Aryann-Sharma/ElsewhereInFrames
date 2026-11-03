@@ -6,7 +6,7 @@ const games = [
         slug: 'red-dead-redemption-2',
         name: 'Red Dead Redemption 2',
         theme: 'red-dead',
-        place: 'The frontier',
+        place: 'The fading West',
         background: '#211b1b',
         description: 'Long rides, changing weather, and the kind of light that makes a trail worth stopping on.'
     },
@@ -22,7 +22,7 @@ const games = [
         slug: 'uncharted-4',
         name: 'Uncharted 4: A Thief’s End',
         theme: 'uncharted',
-        place: 'The long way round',
+        place: 'The pirate trail',
         background: '#202e31',
         description: 'Coastlines, old stone, and the quiet moments between one discovery and the next.'
     },
@@ -30,7 +30,7 @@ const games = [
         slug: 'assassins-creed-unity',
         name: 'Assassin’s Creed Unity',
         theme: 'unity',
-        place: 'Paris',
+        place: 'Revolutionary Paris',
         background: '#1b202d',
         description: 'Paris from the rooftops: dense streets, pale stone, and a city full of movement.'
     },
@@ -62,7 +62,7 @@ const games = [
         slug: 'assassins-creed-mirage',
         name: 'Assassin’s Creed Mirage',
         theme: 'mirage',
-        place: 'Baghdad',
+        place: 'Abbasid Baghdad',
         background: '#302b2b',
         description: 'Warm stone, crowded streets, and the quieter corners of a city seen from its rooftops.'
     },
@@ -70,7 +70,7 @@ const games = [
         slug: 'assassins-creed-syndicate',
         name: 'Assassin’s Creed Syndicate',
         theme: 'syndicate',
-        place: 'London',
+        place: 'Victorian London',
         background: '#232a2c',
         description: 'Victorian London in smoke and lamplight, from its broad avenues to its narrow alleys.'
     },
@@ -102,7 +102,7 @@ const games = [
         slug: 'the-last-of-us-part-i',
         name: 'The Last of Us Part I',
         theme: 'last-of-us',
-        place: 'Reclaimed places',
+        place: 'Across post-pandemic America',
         background: '#252d29',
         description: 'The stillness of abandoned rooms, green growth, and light finding its way back in.'
     },
@@ -110,31 +110,24 @@ const games = [
         slug: 'the-last-of-us-part-ii',
         name: 'The Last of Us Part II',
         theme: 'last-of-us-2',
-        place: 'Rain and overgrowth',
+        place: 'A long way from Jackson',
         background: '#202b2d',
         description: 'Wet streets, heavy skies, and small details that reward a second look.'
     },
     {
         slug: 'grand-theft-auto-v',
-        name: 'Grand Theft Auto V',
+        name: 'GTA 5 & Online',
         theme: 'gta-v',
-        place: 'Los Santos',
+        place: 'Los Santos & Blaine County',
+        photoSlugs: ['grand-theft-auto-v', 'gta-online'],
         background: '#273c40',
-        description: 'Late afternoon streets, distant hills, and the colour of a city close to the coast.'
-    },
-    {
-        slug: 'gta-online',
-        name: 'GTA Online',
-        theme: 'gta-online',
-        place: 'After dark',
-        background: '#22213a',
-        description: 'A familiar city after hours, where the lights and the pace tell another story.'
+        description: 'City lights, mountain roads, and the change in pace between Los Santos and Blaine County.'
     }
 ];
 
 const photos = JSON.parse((await readFile('assets/screenshots/manifest.json', 'utf8')).replace(/^\uFEFF/, ''));
 const escapeHtml = (value) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
-const framesFor = (game) => photos[game.slug] ?? [];
+const framesFor = (game) => (game.photoSlugs ?? [game.slug]).flatMap((slug) => photos[slug] ?? []);
 const coverFrames = {
     'cyberpunk-2077': 3,
     'uncharted-4': 3,
@@ -240,6 +233,7 @@ ${frames.map((frame, frameIndex) => `                <figure class="photo-item">
     <title>${escapeHtml(game.name)} — Elsewhere in Frames</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../games.css">
+    <script src="../scripts/photo-viewer.js" defer></script>
 </head>
 <body class="world-page theme-${game.theme}" style="--page-bg: ${game.background}">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -274,6 +268,13 @@ ${gallery}
             </nav>
         </section>
     </main>
+    <dialog class="photo-viewer" aria-label="Photograph viewer" tabindex="-1">
+        <img class="viewer-image" alt="">
+        <button class="viewer-close viewer-control" type="button" aria-label="Close viewer">×</button>
+        <button class="viewer-previous viewer-control" type="button" aria-label="Previous frame">‹</button>
+        <button class="viewer-next viewer-control" type="button" aria-label="Next frame">›</button>
+        <p class="viewer-count" aria-live="polite"></p>
+    </dialog>
     <footer class="site-footer">
         <div class="footer-inner">
             <a class="wordmark" href="../index.html">Elsewhere <span>in Frames</span></a>
@@ -289,3 +290,17 @@ ${gallery}
 await mkdir('games', { recursive: true });
 await writeFile('catalogue.html', catalogue);
 await Promise.all(games.map((game, index) => writeFile(`games/${game.slug}.html`, gamePage(game, index))));
+await writeFile('games/gta-online.html', `<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="0; url=grand-theft-auto-v.html">
+    <link rel="canonical" href="grand-theft-auto-v.html">
+    <title>GTA 5 &amp; Online — Elsewhere in Frames</title>
+</head>
+<body>
+    <p>The GTA 5 &amp; Online photographs are now together. <a href="grand-theft-auto-v.html">Open the gallery</a>.</p>
+</body>
+</html>
+`);
