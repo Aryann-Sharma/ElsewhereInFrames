@@ -73,6 +73,7 @@
 .world-page .photo-item a:hover img { border-color: var(--accent); }
 .world-page .photo-caption { display: flex; justify-content: space-between; gap: 10px; padding-top: 11px; color: #ece5e5ad; font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
 .world-page .photo-caption span:last-child { color: var(--accent); }
+.world-page .photo-note { margin: 9px 0 0; color: #ece5e5c9; font-size: 13px; line-height: 1.5; }
 .viewer-open { overflow: hidden; }
 .photo-viewer { position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: #090b10; color: #f4edf4; }
 .photo-viewer::backdrop { background: #090b10; }
@@ -128,10 +129,6 @@
     .viewer-close { top: 14px; right: 14px; }
     .viewer-previous { left: 10px; }
     .viewer-next { right: 10px; }
-}
-
-@media (hover: none) {
-    .photo-viewer.is-idle .viewer-control, .photo-viewer.is-idle .viewer-count { opacity: 1; pointer-events: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {

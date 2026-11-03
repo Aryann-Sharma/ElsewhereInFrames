@@ -11,6 +11,7 @@ if (gallery && viewer) {
     let current = 0;
     let openedFrom;
     let idleTimer;
+    let touchStart;
 
     function showControls() {
         viewer.classList.remove('is-idle');
@@ -71,9 +72,31 @@ if (gallery && viewer) {
         if (event.pointerType !== 'touch') showControls();
     });
     viewer.addEventListener('pointerdown', showControls);
+    viewer.addEventListener('touchstart', (event) => {
+        if (event.touches.length !== 1) {
+            touchStart = undefined;
+            return;
+        }
+        touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    }, { passive: true });
+    viewer.addEventListener('touchend', (event) => {
+        if (!touchStart) return;
+        if (event.changedTouches.length !== 1) {
+            touchStart = undefined;
+            return;
+        }
+        const distanceX = event.changedTouches[0].clientX - touchStart.x;
+        const distanceY = event.changedTouches[0].clientY - touchStart.y;
+        touchStart = undefined;
+        if (Math.abs(distanceX) < 55 || Math.abs(distanceX) < Math.abs(distanceY) * 1.3) return;
+        showFrame(current + (distanceX < 0 ? 1 : -1));
+        showControls();
+    }, { passive: true });
+    viewer.addEventListener('touchcancel', () => { touchStart = undefined; });
 
     viewer.addEventListener('close', () => {
         clearTimeout(idleTimer);
+        touchStart = undefined;
         viewer.classList.remove('is-idle');
         image.removeAttribute('src');
         document.body.classList.remove('viewer-open');

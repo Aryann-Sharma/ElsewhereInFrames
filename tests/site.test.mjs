@@ -38,9 +38,13 @@ test('catalogue and galleries match the screenshot collection', async () => {
 
         assert.equal((html.match(/class="photo-item"/g) ?? []).length, frames.length, slug);
         assert.match(html, /href="\.\.\/catalogue\.html"/, `${slug} needs a catalogue link`);
-        assert.match(html, /alt="Screenshot from [^"]+, frame 1"/, `${slug} needs descriptive gallery text`);
+        assert.match(html, /<img [^>]+ alt="[^"]+" loading="lazy"/, `${slug} needs gallery image text`);
         assert.match(html, /<dialog class="photo-viewer"/, `${slug} needs the full-screen viewer`);
         assert.match(html, /src="\.\.\/scripts\/photo-viewer\.js"/, `${slug} needs viewer controls`);
+
+        const cover = html.match(/class="world-hero-image" src="\.\.\/([^"]+)"/);
+        const firstFrame = html.match(/class="photo-grid">[\s\S]*?<img src="\.\.\/([^"]+)"/);
+        assert.equal(firstFrame?.[1], cover?.[1], `${slug} should open with its cover photograph`);
 
         for (const frame of frames) {
             assert.ok(html.includes(`href="../${frame.full}"`), `${slug}: missing full image ${frame.full}`);
@@ -48,6 +52,9 @@ test('catalogue and galleries match the screenshot collection', async () => {
         }
     }
     assert.equal(photoCount, 176);
+
+    const captioned = await Promise.all(gameSlugs.map((slug) => readFile(join(root, 'games', `${slug}.html`), 'utf8')));
+    assert.equal(captioned.reduce((total, html) => total + (html.match(/class="photo-note"/g) ?? []).length, 0), 10);
 
     const oldGtaPage = await readFile(join(root, 'games/gta-online.html'), 'utf8');
     assert.match(oldGtaPage, /http-equiv="refresh" content="0; url=grand-theft-auto-v\.html"/);
@@ -124,6 +131,12 @@ test('all local navigation and image requests resolve over HTTP', async () => {
             assert.match(response.headers.get('content-type'), /text\/html/, page);
             const html = await response.text();
             assert.match(html, /<title>[^<]+<\/title>/, page);
+            const socialImage = html.match(/<meta property="og:image" content="([^"]+)"/);
+            assert.ok(socialImage, `${page}: missing sharing image`);
+            const socialUrl = new URL(socialImage[1]);
+            assert.equal(socialUrl.hostname, 'aryann-sharma.github.io', page);
+            assert.ok(socialUrl.pathname.startsWith('/ElsewhereInFrames/assets/'), page);
+            resources.add(socialUrl.pathname.slice('/ElsewhereInFrames'.length));
             htmlByPath.set(url.pathname, html);
 
             for (const reference of localReferences(html)) {

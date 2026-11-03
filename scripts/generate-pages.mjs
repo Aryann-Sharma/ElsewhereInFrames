@@ -126,6 +126,7 @@ const games = [
 ];
 
 const photos = JSON.parse((await readFile('assets/screenshots/manifest.json', 'utf8')).replace(/^\uFEFF/, ''));
+const siteUrl = 'https://aryann-sharma.github.io/ElsewhereInFrames/';
 const escapeHtml = (value) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
 const framesFor = (game) => (game.photoSlugs ?? [game.slug]).flatMap((slug) => photos[slug] ?? []);
 const coverFrames = {
@@ -140,10 +141,74 @@ const coverFrames = {
     'grand-theft-auto-v': 9
 };
 const coverFor = (game) => framesFor(game)[(coverFrames[game.slug] ?? 1) - 1] ?? framesFor(game)[0];
+const openingFrames = {
+    'red-dead-redemption-2': [1, 16, 7],
+    'cyberpunk-2077': [3, 1, 8],
+    'ghost-of-tsushima': [13, 8, 1]
+};
+const galleryFramesFor = (game) => {
+    const frames = framesFor(game);
+    const opening = (openingFrames[game.slug] ?? [coverFrames[game.slug] ?? 1])
+        .map((number) => frames[number - 1])
+        .filter(Boolean);
+    return [...opening, ...frames.filter((frame) => !opening.includes(frame))];
+};
+const frameNotes = {
+    'assets/screenshots/red-dead-redemption-2/frame-001.jpg': {
+        alt: 'A rider on horseback overlooking a valley hidden by fog',
+        text: 'A rider at the edge of the fog.'
+    },
+    'assets/screenshots/cyberpunk-2077/frame-003.jpg': {
+        alt: 'Rain reflecting Night City lights across an empty street',
+        text: 'Rain turns the crossing into a mirror.'
+    },
+    'assets/screenshots/uncharted-4/frame-003.jpg': {
+        alt: 'Nathan Drake looking out over a chain of tropical islands',
+        text: 'The islands come into view from the ridge.'
+    },
+    'assets/screenshots/assassins-creed-unity/frame-001.jpg': {
+        alt: 'Notre-Dame rising above the pale rooftops of Paris',
+        text: 'Notre-Dame above the Paris rooftops.'
+    },
+    'assets/screenshots/assassins-creed-syndicate/frame-001.jpg': {
+        alt: 'Tower Bridge over the Thames beneath a dusky sky',
+        text: 'Tower Bridge in the last light.'
+    },
+    'assets/screenshots/ghost-of-tsushima/frame-013.jpg': {
+        alt: 'A field of red flowers under an orange sunset on Tsushima',
+        text: 'The flowers almost match the evening sky.'
+    },
+    'assets/screenshots/marvels-spider-man-miles-morales/frame-004.jpg': {
+        alt: 'Miles Morales overlooking snowy New York at sunset',
+        text: 'Winter light over New York.'
+    },
+    'assets/screenshots/the-last-of-us-part-i/frame-007.jpg': {
+        alt: 'Joel and Ellie watching giraffes in an overgrown city',
+        text: 'Giraffes in a city that has gone quiet.'
+    },
+    'assets/screenshots/the-last-of-us-part-ii/frame-004.jpg': {
+        alt: 'Ellie facing a broken, overgrown street in Seattle',
+        text: 'Seattle, with its streets giving way to trees.'
+    },
+    'assets/screenshots/grand-theft-auto-v/frame-009.jpg': {
+        alt: 'A car on a quiet Los Santos boulevard at night',
+        text: 'A quiet stretch of Los Santos after dark.'
+    }
+};
 const footerCredits = `<p class="footer-credits">
                 <span>© 2026 Aryan Sharma · Site design and writing</span>
                 <small>Screenshots captured by Aryan Sharma. Game content and trademarks belong to their respective owners. Unofficial fan project.</small>
             </p>`;
+function photoItem(game, frame, index) {
+    const note = frameNotes[frame.full];
+    const description = note?.alt ?? `Screenshot from ${game.name}, frame ${index + 1}`;
+    return `                <figure class="photo-item">
+                    <a href="../${frame.full}" aria-label="Open full-size photograph: ${escapeHtml(description)}">
+                        <img src="../${frame.thumb}" width="${frame.width}" height="${frame.height}" alt="${escapeHtml(description)}" loading="lazy" decoding="async">
+                        <span class="photo-caption"><span>Frame ${String(index + 1).padStart(3, '0')}</span><span>Open full size ↗</span></span>
+                    </a>
+${note ? `                    <figcaption class="photo-note">${escapeHtml(note.text)}</figcaption>\n` : ''}                </figure>`;
+}
 const card = (game, index) => `                    <a class="game-card theme-${game.theme}" href="games/${game.slug}.html">
                         <span class="game-card-art" aria-hidden="true"></span>
 ${framesFor(game).length ? `                        <img class="game-card-image" src="${coverFor(game).thumb}" alt="" loading="lazy" decoding="async">\n` : ''}                        <span class="game-card-copy"><span class="game-card-number">${String(index + 1).padStart(2, '0')} / ${escapeHtml(game.place)}</span><strong>${escapeHtml(game.name)}</strong><span>${framesFor(game).length ? 'View the frames' : 'Explore this world'} ↗</span></span>
@@ -160,7 +225,11 @@ const catalogue = `<!doctype html>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Catalogue — Elsewhere in Frames">
     <meta property="og:description" content="A catalogue of places to photograph across video game worlds.">
+    <meta property="og:image" content="${siteUrl}assets/featured-frame.jpeg">
+    <meta property="og:image:alt" content="Mountains and a winding river in Red Dead Redemption 2">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Catalogue — Elsewhere in Frames</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="games.css">
 </head>
@@ -204,15 +273,10 @@ ${games.map((game, index) => card(game, index)).join('\n')}
 function gamePage(game, index) {
     const previous = games[(index - 1 + games.length) % games.length];
     const next = games[(index + 1) % games.length];
-    const frames = framesFor(game);
+    const frames = galleryFramesFor(game);
     const gallery = frames.length
         ? `            <div class="photo-grid">
-${frames.map((frame, frameIndex) => `                <figure class="photo-item">
-                    <a href="../${frame.full}" aria-label="Open full-size frame ${frameIndex + 1} from ${escapeHtml(game.name)}">
-                        <img src="../${frame.thumb}" width="${frame.width}" height="${frame.height}" alt="Screenshot from ${escapeHtml(game.name)}, frame ${frameIndex + 1}" loading="lazy" decoding="async">
-                        <span class="photo-caption"><span>Frame ${String(frameIndex + 1).padStart(3, '0')}</span><span>Open full size ↗</span></span>
-                    </a>
-                </figure>`).join('\n')}
+${frames.map((frame, frameIndex) => photoItem(game, frame, frameIndex)).join('\n')}
             </div>`
         : `            <div class="empty-gallery">
                 <strong>The first frames are on their way.</strong>
@@ -230,7 +294,11 @@ ${frames.map((frame, frameIndex) => `                <figure class="photo-item">
     <meta property="og:type" content="website">
     <meta property="og:title" content="${escapeHtml(game.name)} — Elsewhere in Frames">
     <meta property="og:description" content="${escapeHtml(game.description)}">
+    <meta property="og:image" content="${siteUrl}${coverFor(game).full}">
+    <meta property="og:image:alt" content="Photograph from ${escapeHtml(game.name)}">
+    <meta name="twitter:card" content="summary_large_image">
     <title>${escapeHtml(game.name)} — Elsewhere in Frames</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../games.css">
     <script src="../scripts/photo-viewer.js" defer></script>
@@ -297,7 +365,14 @@ await writeFile('games/gta-online.html', `<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="refresh" content="0; url=grand-theft-auto-v.html">
     <link rel="canonical" href="grand-theft-auto-v.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GTA 5 &amp; Online — Elsewhere in Frames">
+    <meta property="og:description" content="Photographs from Los Santos and Blaine County.">
+    <meta property="og:image" content="${siteUrl}assets/screenshots/grand-theft-auto-v/frame-009.jpg">
+    <meta property="og:image:alt" content="A Los Santos street at night">
+    <meta name="twitter:card" content="summary_large_image">
     <title>GTA 5 &amp; Online — Elsewhere in Frames</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 </head>
 <body>
     <p>The GTA 5 &amp; Online photographs are now together. <a href="grand-theft-auto-v.html">Open the gallery</a>.</p>

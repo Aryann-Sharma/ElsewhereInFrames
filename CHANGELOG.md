@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Curated the opening frames in the galleries and added short notes and clearer image descriptions to ten photographs.
+- Put the introduction first on narrow screens and linked the homepage's main action directly to the catalogue.
+- Added horizontal touch swipes to the photograph viewer.
+- Added a browser icon and sharing images for the homepage, catalogue, and game pages.
+
 ## v1.0.1 — 2026-11-03
 
 - Made the photograph viewer controls lighter and reduced the idle fade delay.
