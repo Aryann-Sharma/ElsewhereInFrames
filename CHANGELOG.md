@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Added a full-screen photograph viewer with on-screen and keyboard navigation, including the featured homepage image.
+- Removed the frame number beneath the featured homepage image.
+- Refined the catalogue setting labels and combined the GTA 5 & Online photographs into one Los Santos and Blaine County gallery.
 - Added a footer credit for the screenshots and a note that game content belongs to its owners.
 - Clarified which image files are public and how to ask about reuse.
 

@@ -12,6 +12,7 @@
     <title>The Last of Us Part I — Elsewhere in Frames</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../games.css">
+    <script src="../scripts/photo-viewer.js" defer></script>
 </head>
 <body class="world-page theme-last-of-us" style="--page-bg: #252d29">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -33,7 +34,7 @@
 
             <div class="world-hero-content">
                 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../catalogue.html">Catalogue</a><span aria-hidden="true">/</span><span>The Last of Us Part I</span></nav>
-                <p class="world-kicker">World 13 / Reclaimed places</p>
+                <p class="world-kicker">World 13 / Across post-pandemic America</p>
                 <h1 id="world-title">The Last of Us Part I</h1>
                 <p class="world-summary">The stillness of abandoned rooms, green growth, and light finding its way back in.</p>
             </div>
@@ -90,6 +91,13 @@
             </nav>
         </section>
     </main>
+    <dialog class="photo-viewer" aria-label="Photograph viewer" tabindex="-1">
+        <img class="viewer-image" alt="">
+        <button class="viewer-close viewer-control" type="button" aria-label="Close viewer">×</button>
+        <button class="viewer-previous viewer-control" type="button" aria-label="Previous frame">‹</button>
+        <button class="viewer-next viewer-control" type="button" aria-label="Next frame">›</button>
+        <p class="viewer-count" aria-live="polite"></p>
+    </dialog>
     <footer class="site-footer">
         <div class="footer-inner">
             <a class="wordmark" href="../index.html">Elsewhere <span>in Frames</span></a>

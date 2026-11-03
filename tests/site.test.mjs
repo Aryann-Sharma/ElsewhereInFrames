@@ -11,6 +11,7 @@ import test from 'node:test';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(await readFile(join(root, 'assets/screenshots/manifest.json'), 'utf8'));
 const slugs = Object.keys(manifest);
+const gameSlugs = slugs.filter((slug) => slug !== 'gta-online');
 const pages = ['index.html', 'catalogue.html', ...slugs.map((slug) => `games/${slug}.html`)];
 
 function localReferences(html) {
@@ -22,20 +23,24 @@ test('catalogue and galleries match the screenshot collection', async () => {
     const catalogueSlugs = [...catalogue.matchAll(/class="game-card [^"]+" href="games\/([^/]+)\.html"/g)]
         .map((match) => match[1]);
 
-    assert.equal(catalogueSlugs.length, slugs.length);
-    assert.deepEqual([...catalogueSlugs].sort(), [...slugs].sort());
-    assert.match(catalogue, new RegExp(`${slugs.length} worlds / 176 photographs`));
+    assert.equal(catalogueSlugs.length, gameSlugs.length);
+    assert.deepEqual([...catalogueSlugs].sort(), [...gameSlugs].sort());
+    assert.match(catalogue, new RegExp(`${gameSlugs.length} worlds / 176 photographs`));
     assert.doesNotMatch(catalogue, /marvels-spider-man-2|Marvel.s Spider-Man 2/i);
 
     let photoCount = 0;
-    for (const slug of slugs) {
+    for (const slug of gameSlugs) {
         const html = await readFile(join(root, 'games', `${slug}.html`), 'utf8');
-        const frames = manifest[slug];
+        const frames = slug === 'grand-theft-auto-v'
+            ? [...manifest[slug], ...manifest['gta-online']]
+            : manifest[slug];
         photoCount += frames.length;
 
         assert.equal((html.match(/class="photo-item"/g) ?? []).length, frames.length, slug);
         assert.match(html, /href="\.\.\/catalogue\.html"/, `${slug} needs a catalogue link`);
         assert.match(html, /alt="Screenshot from [^"]+, frame 1"/, `${slug} needs descriptive gallery text`);
+        assert.match(html, /<dialog class="photo-viewer"/, `${slug} needs the full-screen viewer`);
+        assert.match(html, /src="\.\.\/scripts\/photo-viewer\.js"/, `${slug} needs viewer controls`);
 
         for (const frame of frames) {
             assert.ok(html.includes(`href="../${frame.full}"`), `${slug}: missing full image ${frame.full}`);
@@ -43,6 +48,9 @@ test('catalogue and galleries match the screenshot collection', async () => {
         }
     }
     assert.equal(photoCount, 176);
+
+    const oldGtaPage = await readFile(join(root, 'games/gta-online.html'), 'utf8');
+    assert.match(oldGtaPage, /http-equiv="refresh" content="0; url=grand-theft-auto-v\.html"/);
 });
 
 test('checked-in catalogue and game pages match the page generator', async () => {
@@ -75,7 +83,8 @@ test('all local navigation and image requests resolve over HTTP', async () => {
         '.html': 'text/html',
         '.jpeg': 'image/jpeg',
         '.jpg': 'image/jpeg',
-        '.json': 'application/json'
+        '.json': 'application/json',
+        '.js': 'text/javascript'
     };
     const server = createServer(async (request, response) => {
         try {

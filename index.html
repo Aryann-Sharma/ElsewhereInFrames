@@ -12,6 +12,7 @@
     <title>Elsewhere in Frames — Game photography by Aryan Sharma</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="games.css">
+    <script src="scripts/photo-viewer.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -34,15 +35,16 @@
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-media" id="featured">
                 <figure class="featured-frame">
-                    <img
-                        src="assets/featured-frame.jpeg"
-                        width="2560"
-                        height="1435"
-                        fetchpriority="high"
-                        alt="Warm light over snow-capped mountains, forest, and a winding river in a game world"
-                    >
+                    <a class="featured-frame-link" href="assets/featured-frame.jpeg" aria-label="Open featured photograph full size">
+                        <img
+                            src="assets/featured-frame.jpeg"
+                            width="2560"
+                            height="1435"
+                            fetchpriority="high"
+                            alt="Warm light over snow-capped mountains, forest, and a winding river in a game world"
+                        >
+                    </a>
                     <figcaption>
-                        <span>Frame 001</span>
                         <span>Red Dead Redemption 2 · Captured by Aryan Sharma</span>
                     </figcaption>
                 </figure>
@@ -77,7 +79,7 @@
                     <a class="game-card theme-red-dead" href="games/red-dead-redemption-2.html">
                         <span class="game-card-art" aria-hidden="true"></span>
                         <img class="game-card-image" src="assets/screenshots/red-dead-redemption-2/frame-001-thumb.jpg" alt="" loading="lazy" decoding="async">
-                        <span class="game-card-copy"><span class="game-card-number">01 / Frontier</span><strong>Red Dead Redemption 2</strong><span>View the frames ↗</span></span>
+                        <span class="game-card-copy"><span class="game-card-number">01 / The fading West</span><strong>Red Dead Redemption 2</strong><span>View the frames ↗</span></span>
                     </a>
                     <a class="game-card theme-cyberpunk" href="games/cyberpunk-2077.html">
                         <span class="game-card-art" aria-hidden="true"></span>
@@ -87,12 +89,12 @@
                     <a class="game-card theme-uncharted" href="games/uncharted-4.html">
                         <span class="game-card-art" aria-hidden="true"></span>
                         <img class="game-card-image" src="assets/screenshots/uncharted-4/frame-003-thumb.jpg" alt="" loading="lazy" decoding="async">
-                        <span class="game-card-copy"><span class="game-card-number">03 / The long way round</span><strong>Uncharted 4: A Thief’s End</strong><span>View the frames ↗</span></span>
+                        <span class="game-card-copy"><span class="game-card-number">03 / The pirate trail</span><strong>Uncharted 4: A Thief’s End</strong><span>View the frames ↗</span></span>
                     </a>
                     <a class="game-card theme-unity" href="games/assassins-creed-unity.html">
                         <span class="game-card-art" aria-hidden="true"></span>
                         <img class="game-card-image" src="assets/screenshots/assassins-creed-unity/frame-001-thumb.jpg" alt="" loading="lazy" decoding="async">
-                        <span class="game-card-copy"><span class="game-card-number">04 / Paris</span><strong>Assassin’s Creed Unity</strong><span>View the frames ↗</span></span>
+                        <span class="game-card-copy"><span class="game-card-number">04 / Revolutionary Paris</span><strong>Assassin’s Creed Unity</strong><span>View the frames ↗</span></span>
                     </a>
                     <a class="game-card theme-spider-man" href="games/marvels-spider-man.html">
                         <span class="game-card-art" aria-hidden="true"></span>
@@ -102,10 +104,10 @@
                     <a class="game-card theme-last-of-us" href="games/the-last-of-us-part-i.html">
                         <span class="game-card-art" aria-hidden="true"></span>
                         <img class="game-card-image" src="assets/screenshots/the-last-of-us-part-i/frame-007-thumb.jpg" alt="" loading="lazy" decoding="async">
-                        <span class="game-card-copy"><span class="game-card-number">06 / Overgrown</span><strong>The Last of Us Part I</strong><span>View the frames ↗</span></span>
+                        <span class="game-card-copy"><span class="game-card-number">06 / Across post-pandemic America</span><strong>The Last of Us Part I</strong><span>View the frames ↗</span></span>
                     </a>
                 </div>
-                <a class="text-link catalogue-link" href="catalogue.html">Browse all 16 worlds <span aria-hidden="true">↗</span></a>
+                <a class="text-link catalogue-link" href="catalogue.html">Browse all 15 worlds <span aria-hidden="true">↗</span></a>
             </div>
         </section>
 
@@ -117,6 +119,11 @@
             </div>
         </section>
     </main>
+
+    <dialog class="photo-viewer" aria-label="Photograph viewer" tabindex="-1">
+        <img class="viewer-image" alt="">
+        <button class="viewer-close viewer-control" type="button" aria-label="Close viewer">×</button>
+    </dialog>
 
     <footer class="site-footer">
         <div class="footer-inner">

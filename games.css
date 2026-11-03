@@ -9,7 +9,6 @@
 .theme-last-of-us { --accent: #bfd0a0; --art: radial-gradient(circle at 72% 22%, #9fa77d, transparent 32%), linear-gradient(145deg, #52604b, #242b2b 76%); }
 .theme-last-of-us-2 { --accent: #b6c9c6; --art: linear-gradient(110deg, transparent 46%, #afc6c344 47%, transparent 48%), radial-gradient(circle at 75% 22%, #6a8b82, transparent 29%), linear-gradient(145deg, #334b4d, #1a2429 78%); }
 .theme-gta-v { --accent: #f5c3a9; --art: radial-gradient(circle at 76% 21%, #e3a98e, transparent 29%), linear-gradient(145deg, #669f98, #273c4a 76%); }
-.theme-gta-online { --accent: #d7b7ed; --art: radial-gradient(circle at 78% 25%, #a75599, transparent 30%), linear-gradient(145deg, #624a89, #1d2035 75%); }
 .theme-mirage { --accent: #eac69c; --art: radial-gradient(circle at 75% 26%, #cea67b, transparent 31%), linear-gradient(145deg, #876748, #292c34 76%); }
 .theme-syndicate { --accent: #c7cbc1; --art: radial-gradient(circle at 75% 26%, #8d9b9a, transparent 30%), linear-gradient(145deg, #495755, #212930 78%); }
 .theme-tsushima { --accent: #c4d6b9; --art: radial-gradient(circle at 73% 25%, #91ab8d, transparent 31%), linear-gradient(145deg, #557366, #202e2c 78%); }
@@ -26,7 +25,6 @@
 .game-card-art { position: absolute; inset: 0; z-index: -3; background: var(--art); transition: transform .35s ease; }
 .game-card-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #10121a0b 20%, #10121ae8 100%); }
 .game-card-image { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
-.theme-gta-online .game-card-image { object-position: center bottom; }
 .game-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, #10121a0a 30%, #10121ad9 100%); pointer-events: none; }
 .game-card-photo .game-card-art { background: linear-gradient(180deg, #10121a00, #10121ae0), url("assets/featured-frame.jpeg") center / cover; }
 .game-card:hover { border-color: var(--accent); }
@@ -75,6 +73,19 @@
 .world-page .photo-item a:hover img { border-color: var(--accent); }
 .world-page .photo-caption { display: flex; justify-content: space-between; gap: 10px; padding-top: 11px; color: #ece5e5ad; font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
 .world-page .photo-caption span:last-child { color: var(--accent); }
+.viewer-open { overflow: hidden; }
+.photo-viewer { position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: #090b10; color: #f4edf4; }
+.photo-viewer::backdrop { background: #090b10; }
+.viewer-image { width: 100%; height: 100%; object-fit: contain; }
+.viewer-control { position: absolute; display: grid; place-items: center; width: 52px; height: 52px; padding: 0; border: 1px solid #ffffff36; border-radius: 50%; background: #090b1080; color: #fff; cursor: pointer; transition: opacity .35s ease, background-color .2s ease; }
+.viewer-control:hover { background: #090b10c9; }
+.viewer-control:disabled { opacity: .28; cursor: default; }
+.viewer-close { top: 24px; right: 24px; font-size: 29px; line-height: 1; }
+.viewer-previous, .viewer-next { top: 50%; transform: translateY(-50%); font-family: Georgia, serif; font-size: 42px; line-height: 1; }
+.viewer-previous { left: 24px; }
+.viewer-next { right: 24px; }
+.viewer-count { position: absolute; right: 0; bottom: 18px; left: 0; margin: 0; color: #f4edf4cc; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-align: center; text-transform: uppercase; pointer-events: none; transition: opacity .35s ease; }
+.photo-viewer.is-idle .viewer-control:not(:focus-visible), .photo-viewer.is-idle .viewer-count { opacity: 0; pointer-events: none; }
 .world-page .empty-gallery { margin-top: 35px; min-height: 360px; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: clamp(28px, 6vw, 75px); border: 1px solid #ffffff36; background: var(--art); }
 .world-page .empty-gallery strong { max-width: 600px; font-size: clamp(30px, 4vw, 58px); font-weight: 400; letter-spacing: -.055em; line-height: 1.08; }
 .world-page .empty-gallery p { max-width: 430px; margin: 16px 0 0; color: #f0e9e9dd; line-height: 1.65; }
@@ -112,8 +123,17 @@
     .world-page .world-navigation { flex-direction: column; }
     .world-page .world-navigation a { max-width: none; }
     .world-page .world-navigation a:last-child { text-align: left; }
+    .viewer-control { width: 44px; height: 44px; }
+    .viewer-close { top: 14px; right: 14px; }
+    .viewer-previous { left: 10px; }
+    .viewer-next { right: 10px; }
+}
+
+@media (hover: none) {
+    .photo-viewer.is-idle .viewer-control, .photo-viewer.is-idle .viewer-count { opacity: 1; pointer-events: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .game-card, .game-card-art { transition: none; }
+    .viewer-control, .viewer-count { transition: none; }
 }
