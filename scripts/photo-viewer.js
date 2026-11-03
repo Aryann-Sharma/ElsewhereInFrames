@@ -17,7 +17,7 @@ if (gallery && viewer) {
         clearTimeout(idleTimer);
         idleTimer = setTimeout(() => {
             if (!viewer.querySelector(':focus-visible')) viewer.classList.add('is-idle');
-        }, 2200);
+        }, 1400);
     }
 
     function showFrame(index) {
