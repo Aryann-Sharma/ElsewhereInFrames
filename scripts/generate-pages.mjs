@@ -94,7 +94,7 @@ const games = [
         slug: 'marvels-spider-man-miles-morales',
         name: 'Marvel’s Spider-Man: Miles Morales',
         theme: 'miles',
-        place: 'Harlem',
+        place: 'New York',
         background: '#252332',
         description: 'A winter city with its own rhythm, bright windows, and streets worth slowing down for.'
     },
