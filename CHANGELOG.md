@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Refined game-page colours around the lighting in their opening photographs.
 - Curated the opening frames in the galleries and added short notes and clearer image descriptions to ten photographs.
 - Put the introduction first on narrow screens and linked the homepage's main action directly to the catalogue.
 - Added horizontal touch swipes to the photograph viewer.

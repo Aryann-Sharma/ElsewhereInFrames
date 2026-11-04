@@ -15,7 +15,7 @@ const games = [
         name: 'Cyberpunk 2077',
         theme: 'cyberpunk',
         place: 'Night City',
-        background: '#0c1a27',
+        background: '#10242a',
         description: 'A city of hard edges and soft reflections, especially after dark and in the rain.'
     },
     {
@@ -23,7 +23,7 @@ const games = [
         name: 'Uncharted 4: A Thief’s End',
         theme: 'uncharted',
         place: 'The pirate trail',
-        background: '#202e31',
+        background: '#1b3037',
         description: 'Coastlines, old stone, and the quiet moments between one discovery and the next.'
     },
     {
@@ -31,7 +31,7 @@ const games = [
         name: 'Assassin’s Creed Unity',
         theme: 'unity',
         place: 'Revolutionary Paris',
-        background: '#1b202d',
+        background: '#27303a',
         description: 'Paris from the rooftops: dense streets, pale stone, and a city full of movement.'
     },
     {
@@ -39,7 +39,7 @@ const games = [
         name: 'Assassin’s Creed Origins',
         theme: 'origins',
         place: 'Ancient Egypt',
-        background: '#303038',
+        background: '#302e37',
         description: 'Open desert, river light, and a landscape that changes with every hour of the day.'
     },
     {
@@ -47,7 +47,7 @@ const games = [
         name: 'Assassin’s Creed Odyssey',
         theme: 'odyssey',
         place: 'Ancient Greece',
-        background: '#1b3042',
+        background: '#30283b',
         description: 'Bright harbours, steep paths, and the deep blue that keeps appearing beyond the hills.'
     },
     {
@@ -55,7 +55,7 @@ const games = [
         name: 'Marvel’s Spider-Man Remastered',
         theme: 'spider-man',
         place: 'New York',
-        background: '#20283a',
+        background: '#272c3e',
         description: 'The city seen from above, from street level, and from everywhere in between.'
     },
     {
@@ -63,7 +63,7 @@ const games = [
         name: 'Assassin’s Creed Mirage',
         theme: 'mirage',
         place: 'Abbasid Baghdad',
-        background: '#302b2b',
+        background: '#362a22',
         description: 'Warm stone, crowded streets, and the quieter corners of a city seen from its rooftops.'
     },
     {
@@ -71,7 +71,7 @@ const games = [
         name: 'Assassin’s Creed Syndicate',
         theme: 'syndicate',
         place: 'Victorian London',
-        background: '#232a2c',
+        background: '#2b2830',
         description: 'Victorian London in smoke and lamplight, from its broad avenues to its narrow alleys.'
     },
     {
@@ -79,7 +79,7 @@ const games = [
         name: 'Ghost of Tsushima',
         theme: 'tsushima',
         place: 'Tsushima Island',
-        background: '#25312c',
+        background: '#321e1e',
         description: 'Open fields, shifting wind, and a landscape that knows when to leave room for silence.'
     },
     {
@@ -87,7 +87,7 @@ const games = [
         name: 'Batman: Arkham Knight',
         theme: 'arkham',
         place: 'Gotham City',
-        background: '#171d2a',
+        background: '#18212d',
         description: 'Gotham after dark: wet streets, sharp silhouettes, and light caught between buildings.'
     },
     {
@@ -95,7 +95,7 @@ const games = [
         name: 'Marvel’s Spider-Man: Miles Morales',
         theme: 'miles',
         place: 'New York',
-        background: '#252332',
+        background: '#302438',
         description: 'A winter city with its own rhythm, bright windows, and streets worth slowing down for.'
     },
     {
@@ -103,7 +103,7 @@ const games = [
         name: 'The Last of Us Part I',
         theme: 'last-of-us',
         place: 'Across post-pandemic America',
-        background: '#252d29',
+        background: '#272f29',
         description: 'The stillness of abandoned rooms, green growth, and light finding its way back in.'
     },
     {
@@ -111,7 +111,7 @@ const games = [
         name: 'The Last of Us Part II',
         theme: 'last-of-us-2',
         place: 'A long way from Jackson',
-        background: '#202b2d',
+        background: '#2b3030',
         description: 'Wet streets, heavy skies, and small details that reward a second look.'
     },
     {
@@ -120,7 +120,7 @@ const games = [
         theme: 'gta-v',
         place: 'Los Santos & Blaine County',
         photoSlugs: ['grand-theft-auto-v', 'gta-online'],
-        background: '#273c40',
+        background: '#25283a',
         description: 'City lights, mountain roads, and the change in pace between Los Santos and Blaine County.'
     }
 ];
