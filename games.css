@@ -1,19 +1,19 @@
 /* The catalogue shares the homepage typography, with a palette for each world. */
 .theme-red-dead { --accent: #dbab75; --art: radial-gradient(circle at 72% 22%, #c6a07b 0, transparent 27%), linear-gradient(145deg, #6b4435, #211d21 70%); }
-.theme-cyberpunk { --accent: #8ce1dc; --art: linear-gradient(112deg, transparent 46%, #db4b9070 47%, transparent 48%), radial-gradient(circle at 78% 28%, #bc337999, transparent 27%), linear-gradient(145deg, #063a50, #0b1726 72%); }
-.theme-uncharted { --accent: #b4dccb; --art: radial-gradient(circle at 76% 24%, #c5b69a 0, transparent 31%), linear-gradient(145deg, #426b69, #202c32 72%); }
-.theme-unity { --accent: #e7aba5; --art: linear-gradient(145deg, transparent 52%, #ab33384d 52%, transparent 54%), radial-gradient(circle at 76% 19%, #a7444c, transparent 26%), linear-gradient(145deg, #29384a, #161b29 72%); }
-.theme-origins { --accent: #ead0a4; --art: radial-gradient(circle at 72% 24%, #dbc290 0, transparent 30%), linear-gradient(145deg, #a6744e, #2d3d4b 76%); }
-.theme-odyssey { --accent: #caddef; --art: radial-gradient(circle at 75% 21%, #e2d5b4 0, transparent 27%), linear-gradient(145deg, #2b7495, #1b354c 75%); }
-.theme-spider-man { --accent: #f0aaa4; --art: linear-gradient(105deg, transparent 46%, #d3e5e43b 47%, transparent 48%), radial-gradient(circle at 75% 22%, #b83b3c, transparent 31%), linear-gradient(145deg, #354e68, #181e30 72%); }
-.theme-last-of-us { --accent: #bfd0a0; --art: radial-gradient(circle at 72% 22%, #9fa77d, transparent 32%), linear-gradient(145deg, #52604b, #242b2b 76%); }
-.theme-last-of-us-2 { --accent: #b6c9c6; --art: linear-gradient(110deg, transparent 46%, #afc6c344 47%, transparent 48%), radial-gradient(circle at 75% 22%, #6a8b82, transparent 29%), linear-gradient(145deg, #334b4d, #1a2429 78%); }
-.theme-gta-v { --accent: #f5c3a9; --art: radial-gradient(circle at 76% 21%, #e3a98e, transparent 29%), linear-gradient(145deg, #669f98, #273c4a 76%); }
-.theme-mirage { --accent: #eac69c; --art: radial-gradient(circle at 75% 26%, #cea67b, transparent 31%), linear-gradient(145deg, #876748, #292c34 76%); }
-.theme-syndicate { --accent: #c7cbc1; --art: radial-gradient(circle at 75% 26%, #8d9b9a, transparent 30%), linear-gradient(145deg, #495755, #212930 78%); }
-.theme-tsushima { --accent: #c4d6b9; --art: radial-gradient(circle at 73% 25%, #91ab8d, transparent 31%), linear-gradient(145deg, #557366, #202e2c 78%); }
-.theme-arkham { --accent: #bdc9dc; --art: radial-gradient(circle at 77% 22%, #647892, transparent 29%), linear-gradient(145deg, #354458, #161c29 76%); }
-.theme-miles { --accent: #e6b0c1; --art: radial-gradient(circle at 73% 22%, #be657d, transparent 30%), linear-gradient(145deg, #534567, #242332 76%); }
+.theme-cyberpunk { --accent: #9ad9d3; --art: linear-gradient(112deg, transparent 46%, #c5528266 47%, transparent 48%), radial-gradient(circle at 78% 28%, #9c477499, transparent 27%), linear-gradient(145deg, #16464b, #10242a 72%); }
+.theme-uncharted { --accent: #b6d9d0; --art: radial-gradient(circle at 76% 24%, #b9b6a1 0, transparent 31%), linear-gradient(145deg, #32636a, #1b3037 72%); }
+.theme-unity { --accent: #e2b6ad; --art: linear-gradient(145deg, transparent 52%, #ac5d624d 52%, transparent 54%), radial-gradient(circle at 76% 19%, #8e6872, transparent 26%), linear-gradient(145deg, #52616c, #27303a 72%); }
+.theme-origins { --accent: #e6d0ad; --art: radial-gradient(circle at 72% 24%, #c6b2a1 0, transparent 30%), linear-gradient(145deg, #696577, #302e37 76%); }
+.theme-odyssey { --accent: #e9c1ad; --art: radial-gradient(circle at 75% 21%, #d4a895 0, transparent 27%), linear-gradient(145deg, #77647c, #30283b 75%); }
+.theme-spider-man { --accent: #e5b5b6; --art: linear-gradient(105deg, transparent 46%, #d3a9ab3b 47%, transparent 48%), radial-gradient(circle at 75% 22%, #91697c, transparent 31%), linear-gradient(145deg, #526783, #272c3e 72%); }
+.theme-last-of-us { --accent: #c3d0aa; --art: radial-gradient(circle at 72% 22%, #9fa77d, transparent 32%), linear-gradient(145deg, #52604b, #272f29 76%); }
+.theme-last-of-us-2 { --accent: #c2cfca; --art: linear-gradient(110deg, transparent 46%, #a8b5aa44 47%, transparent 48%), radial-gradient(circle at 75% 22%, #74847b, transparent 29%), linear-gradient(145deg, #455552, #2b3030 78%); }
+.theme-gta-v { --accent: #e9b9ad; --art: radial-gradient(circle at 76% 21%, #af7d86, transparent 29%), linear-gradient(145deg, #445173, #25283a 76%); }
+.theme-mirage { --accent: #e4c394; --art: radial-gradient(circle at 75% 26%, #c39a70, transparent 31%), linear-gradient(145deg, #876649, #362a22 76%); }
+.theme-syndicate { --accent: #ddbdab; --art: radial-gradient(circle at 75% 26%, #af7e73, transparent 30%), linear-gradient(145deg, #555b69, #2b2830 78%); }
+.theme-tsushima { --accent: #e9b29d; --art: radial-gradient(circle at 73% 25%, #b2674b, transparent 31%), linear-gradient(145deg, #753831, #321e1e 78%); }
+.theme-arkham { --accent: #bbcce2; --art: radial-gradient(circle at 77% 22%, #647d99, transparent 29%), linear-gradient(145deg, #35485c, #18212d 76%); }
+.theme-miles { --accent: #e7bbcb; --art: radial-gradient(circle at 73% 22%, #b37091, transparent 30%), linear-gradient(145deg, #685273, #302438 76%); }
 
 .selected-worlds { padding-block: 110px 125px; }
 .selected-heading { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 42px; }
